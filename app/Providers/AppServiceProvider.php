@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // JetstrapFacade::useAdminLte3();
+        JetstrapFacade::useAdminLte3();
         // JetstrapFacade::useCoreUi3();
     }
 }
