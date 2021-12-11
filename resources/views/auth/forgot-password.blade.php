@@ -21,7 +21,7 @@
             <form method="POST" action="/forgot-password">
                 @csrf
 
-                <div class="form-group">
+                <div class="mb-3">
                     <x-jet-label value="Email" />
                     <x-jet-input type="email" name="email" :value="old('email')" required autofocus />
                 </div>
