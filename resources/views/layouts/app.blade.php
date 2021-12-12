@@ -53,16 +53,19 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                    <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
-                         class="user-image img-circle elevation-2" alt="User Image">
+
+                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                    <img class="user-image img-circle elevation-2" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                    @else
                     <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
+                    @endif
                 </a>
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <!-- User image -->
                     <li class="user-header bg-primary">
-                        <img src="https://assets.infyom.com/logo/blue_logo_150x150.png"
-                             class="img-circle elevation-2"
-                             alt="User Image">
+                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                        <img class="user-image img-circle elevation-2 mt-2" width="32" height="32" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                        @endif
                         <p>
                             {{ Auth::user()->name }}
                             <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>
@@ -70,7 +73,7 @@
                     </li>
                     <!-- Menu Footer-->
                     <li class="user-footer">
-                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                        <a href="{{ route('profile.show') }}" class="btn btn-default btn-flat">Profile</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             Sign out
@@ -90,6 +93,13 @@
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <section class="content mx-3">
+            @if (isset($slot))
+            <div class="container">
+                <div class="row">
+                    {{ $slot }}            
+                </div>
+            </div>
+            @endif
             @yield('content')
         </section>
     </div>
@@ -154,6 +164,10 @@
 </script>
 
 @stack('third_party_scripts')
+
+{{-- @stack('modals') --}}
+        @livewireScripts
+        {{-- @stack('scripts') --}}
 
 @stack('page_scripts')
 </body>

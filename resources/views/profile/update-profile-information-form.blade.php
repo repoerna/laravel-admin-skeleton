@@ -37,9 +37,9 @@
                 </div>
 
                 <!-- New Profile Photo Preview -->
-                <div class="mt-2" x-show="photoPreview">
+                {{-- <div class="mt-2" x-show="photoPreview">
                     <img x-bind:src="photoPreview" class="rounded-circle" width="80px" height="80px">
-                </div>
+                </div> --}}
 
                 <x-jet-secondary-button class="mt-2 me-2" type="button" x-on:click.prevent="$refs.photo.click()">
                     {{ __('Select A New Photo') }}

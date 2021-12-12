@@ -44,10 +44,20 @@
                 <div class="mb-0">
                     <div class="d-flex justify-content-end align-items-baseline">
                         @if (Route::has('password.request'))
+                        <span class="mr-2">
                             <a class="text-muted me-3" href="{{ route('password.request') }}">
-                                {{ __('Forgot your password?') }}
+                                {{ __('Forgot your password') }}
                             </a>
+                            <a>
+                                or
+                            </a>
+                            <a class="text-muted me-3" href="{{ route('register') }}">
+                                {{ __('Register?') }}
+                            </a>
+                        </span>
                         @endif
+                        <br>
+                       
 
                         <x-jet-button>
                             {{ __('Log in') }}
