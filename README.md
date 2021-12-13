@@ -26,7 +26,7 @@
 ```sh
 php artisan infyom:scaffold --fromTable --tableName=users --seeder --skip=model User --softDelete --datatables=true --paginate=30 --ignoreFields=password,remember_token,two_factor_recovery_codes,two_factor_secret,current_team_id
 ```
-
+---
 ## How to use
 
 Clone the repository with `git clone`
